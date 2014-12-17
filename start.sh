@@ -34,6 +34,7 @@ if [ -n "$ACLGRANT" ]; then
 fi
 
 # Make Apache config hostname dynamic
+HOSTNAME=`hostname -f`
 sed -i -e 's/SSLCertificateFile.*$/SSLCertificateFile      \/var\/lib\/puppet\/ssl\/certs\/${HOSTNAME}.pem/g' /etc/apache2/sites-enabled/puppetmaster.conf
 sed -i -e 's/SSLCertificateKeyFile.*$/SSLCertificateKeyFile   \/var\/lib\/puppet\/ssl\/private_keys\/${HOSTNAME}.pem/g' /etc/apache2/sites-enabled/puppetmaster.conf
 
